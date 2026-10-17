@@ -43,13 +43,14 @@ function useTitle() {
 }
 
 export default function Layout() {
-  const { role } = useAuth();
+  const { role, name } = useAuth();
   const nav = useNavigate();
   const isTab = useIsTab();
   const title = useTitle();
   return (
     <div className="app">
       <nav className="tabs">
+        <div className="brand">💡 LightShop<small>{name ?? role}</small></div>
         {tabsFor(role).map((t) => (
           <NavLink key={t.to} to={t.to}><span className="ico">{t.icon}</span>{t.label}</NavLink>
         ))}

@@ -60,7 +60,7 @@ export default function Deliveries() {
       <Chips<F> value={filter} onChange={setFilter}
         options={[...(role === 'admin' ? [{ key: 'pending' as F, label: 'To assign' }] : []),
           { key: 'active', label: 'Active' }, { key: 'done', label: 'Delivered' }, { key: 'cancelled', label: 'Cancelled' }, { key: 'all', label: 'All' }]} />
-      {loading ? <div className="spinner" /> : shown.length === 0 ? <div className="empty">No deliveries here</div> : shown.map((item) => (
+      {loading ? <div className="spinner" /> : shown.length === 0 ? <div className="empty">No deliveries here</div> : <div className="cards">{shown.map((item) => (
         <button key={item.id} className="card click" onClick={() => nav(`/delivery/${item.id}`)}>
           <div className="row sb">
             <div className="name f1 mr8" style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.customer_name}</div>
@@ -70,7 +70,7 @@ export default function Deliveries() {
           <div className="mt8">{item.delivery_items.map((i: any) => `${i.qty} × ${i.product_name}`).join(', ')}</div>
           <div className="muted">{new Date(item.created_at).toLocaleDateString('en-IN')}{item.assigned_name ? ` · ${item.assigned_name}` : ''}</div>
         </button>
-      ))}
+      ))}</div>}
       <ScanModal open={scanOpen} onClose={() => setScanOpen(false)} onScanned={onParcel} />
     </div>
   );

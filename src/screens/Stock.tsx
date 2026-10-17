@@ -41,14 +41,14 @@ export default function Stock() {
       {isTab && <h1 className="mb12">Stock</h1>}
       <input className="input" placeholder="Search any product, SKU or barcode" value={q} onChange={(e) => setQ(e.target.value)} />
       {term ? (
-        found.length === 0 ? <div className="empty">No products found</div> : found.map((item) => (
+        found.length === 0 ? <div className="empty">No products found</div> : <div className="cards">{found.map((item) => (
           <button key={item.id} className="card click row" onClick={() => nav(`/product/${item.id}`)}>
             <div className="f1 mr8"><div className="name">{item.name}</div><div className="muted">{item.sku} · {item.category || 'Uncategorised'}</div></div>
             <Pill {...stockInfo(item.stock, item.low_stock_level)} />
           </button>
-        ))
+        ))}</div>
       ) : (
-        <>
+        <div className="cards">
           <button className="card click dark row" onClick={() => nav('/stock/products')}>
             <span style={{ fontSize: 28, marginRight: 14 }}>📦</span>
             <div className="f1"><div className="name">All products</div><div className="muted" style={{ color: '#CBD5E1' }}>{rows.length} products in {groups.length} categories</div></div>
@@ -71,7 +71,7 @@ export default function Stock() {
               <span className="chev">›</span>
             </button>
           ))}
-        </>
+        </div>
       )}
     </div>
   );

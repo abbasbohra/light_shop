@@ -45,7 +45,7 @@ export default function Search() {
           <div className="name mt8">No products found</div>
           <div className="muted">Check the spelling or try a SKU.</div>
         </div>
-      ) : rows.map((item) => <ProductCard key={item.id} item={item} onPress={() => nav(`/product/${item.id}`)} />)}
+      ) : <div className="cards">{rows.map((item) => <ProductCard key={item.id} item={item} onPress={() => nav(`/product/${item.id}`)} />)}</div>}
     </div>
   );
 }

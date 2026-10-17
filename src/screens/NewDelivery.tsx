@@ -139,7 +139,7 @@ export default function NewDelivery() {
   ) : null;
 
   return (
-    <div className="page cardin">
+    <div className="page wide cols cardin">
       <div className="card">
         <div className="name mb12">1. Customer and address</div>
         {inp('Customer name *', 'name')}

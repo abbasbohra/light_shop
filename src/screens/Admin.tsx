@@ -42,13 +42,13 @@ export default function Admin() {
         <div style={{ fontSize: 26, fontWeight: 800, marginTop: 4 }}>₹{Math.round(s?.stock_value ?? 0).toLocaleString('en-IN')}</div>
       </div>
       <div className="section">Manage</div>
-      {links.map(([icon, title, desc, to]) => (
+      <div className="cards">{links.map(([icon, title, desc, to]) => (
         <button key={to} className="card click row" onClick={() => nav(to)}>
           <span style={{ fontSize: 28, marginRight: 14 }}>{icon}</span>
           <div className="f1"><div className="name">{title}</div><div className="muted">{desc}</div></div>
           <span className="chev">›</span>
         </button>
-      ))}
+      ))}</div>
     </div>
   );
 }

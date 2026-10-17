@@ -66,7 +66,7 @@ export default function Users() {
     <div className="page">
       <button className="btn accent" style={{ marginTop: 0 }} onClick={openNew}>+ Add user</button>
       <button className="link mt12 mb12" style={{ width: '100%', textAlign: 'center' }} onClick={() => alertBox('What can each role do?', PERMS)}>ℹ️ What can each role do?</button>
-      {loading ? <div className="spinner" /> : users.map((item) => (
+      {loading ? <div className="spinner" /> : <div className="cards">{users.map((item) => (
         <button key={item.id} className="card click" onClick={() => openEdit(item)}>
           <div className="row sb">
             <div className="name f1 mr8">{item.full_name || item.email}</div>
@@ -75,7 +75,7 @@ export default function Users() {
           <div className="muted">{item.email}{item.phone ? ` · ${item.phone}` : ''}</div>
           {!item.active && <div style={{ color: 'var(--red)', fontWeight: 800, marginTop: 6 }}>Disabled</div>}
         </button>
-      ))}
+      ))}</div>}
 
       <Sheet visible={open} onClose={() => setOpen(false)} title={editing ? 'Edit user' : 'Add user'}>
         <label className="label">Full name</label>

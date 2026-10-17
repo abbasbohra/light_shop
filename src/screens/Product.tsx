@@ -65,7 +65,7 @@ export default function Product() {
   ];
 
   return (
-    <div className="page">
+    <div className="page wide cols">
       {imgs.length > 0 && <div className="scroll-x">{imgs.map((u, k) => <img key={k} className="photo" src={u} alt="" />)}</div>}
       <div className="card mt12">
         <div style={{ fontSize: 22, fontWeight: 800 }}>{p.name}</div>

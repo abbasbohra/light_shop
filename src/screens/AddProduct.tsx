@@ -125,10 +125,11 @@ export default function AddProduct() {
   }
 
   return (
-    <div className="page cardin">
+    <div className="page wide cardin">
       <h1>Add Product</h1>
       <div className="sub" style={{ marginBottom: 16 }}>Take photos, add the barcode and details. Sales staff can then find it by photo or barcode.</div>
 
+      <div className="cols">
       <div className="card">
         <div className="section" style={{ marginTop: 0 }}>1. Product photos</div>
         <div className="photos">
@@ -203,6 +204,8 @@ export default function AddProduct() {
           <Field label="Description" value={f.description} onChange={set('description')} multiline />
         </div>
       )}
+
+      </div>
 
       <button className="btn" style={{ padding: 17, fontSize: 16, borderRadius: 14 }} onClick={save} disabled={busy}>
         {busy ? (progress || 'Saving…') : existing ? 'Add Photos to Product' : 'Save Product'}

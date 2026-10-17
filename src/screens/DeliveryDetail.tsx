@@ -120,7 +120,7 @@ export default function DeliveryDetail() {
   );
 
   return (
-    <div className="page">
+    <div className="page wide cols">
       <div className="card">
         <div className="row sb">
           <div className="f1 mr8" style={{ fontSize: 22, fontWeight: 800 }}>{d.customer_name}</div>

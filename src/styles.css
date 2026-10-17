@@ -878,3 +878,101 @@ video {
     background: var(--redBg);
   }
 }
+
+/* ===== buttons: compact on desktop ===== */
+.btn.auto {
+  white-space: nowrap;
+}
+.savebtn {
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 14px;
+}
+@media (min-width: 760px) {
+  .btn {
+    font-size: 14px;
+    padding: 11px 18px;
+    border-radius: 10px;
+  }
+  .btn.auto {
+    padding: 9px 16px;
+  }
+  .savebtn {
+    width: auto;
+    min-width: 240px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: 0;
+    padding: 12px 28px;
+    font-size: 15px;
+  }
+  .row.gap8 > .btn.auto {
+    flex: 0 0 auto;
+  }
+}
+
+/* ===== print only the barcode label (Product page "Print label") ===== */
+.print-only {
+  display: none;
+}
+@page {
+  margin: 10mm;
+}
+@media print {
+  body.print-label .tabs,
+  body.print-label .hdr {
+    display: none !important;
+  }
+  body.print-label .main {
+    margin: 0;
+    padding: 0;
+  }
+  body.print-label .page {
+    padding: 0;
+    max-width: none;
+    column-count: 1;
+  }
+  body.print-label .page > *:not(.print-only) {
+    display: none !important;
+  }
+  body.print-label .print-only {
+    display: block !important;
+    text-align: center;
+    color: #000;
+  }
+}
+
+/* ===== sticker label (size comes from --lw / --lh, set when printing) ===== */
+@media print {
+  body.print-label,
+  body.print-label .app {
+    background: #fff;
+    min-height: 0;
+  }
+  body.print-label .print-only.label {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: var(--lw);
+    height: var(--lh);
+    padding: 1.5mm;
+    overflow: hidden;
+    box-sizing: border-box;
+    page-break-after: avoid;
+  }
+  body.print-label .l-name {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 700;
+    font-size: calc(var(--lh) * 0.085);
+    line-height: 1.15;
+  }
+  body.print-label .l-sub {
+    font-size: calc(var(--lh) * 0.07);
+    line-height: 1.15;
+    margin-bottom: 0.8mm;
+  }
+}
